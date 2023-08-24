@@ -17,12 +17,12 @@ echo "Proteccion DOS, listo"
 iptables -A INPUT -p icmp --icmp-type echo-request -j DROP
 echo "Bloqueo de ping externo, listo"
 
-# Regla 9: Limitar el número de conexiones SSH por IP
+# Limitar el número de conexiones SSH por IP
 iptables -A INPUT -p tcp --dport 22 -m connlimit --connlimit-above 2 -j DROP
 echo "limitacion deconexiones SSH, listo"
 
 
-# Regla 10: Evitar escaneos de puertos (fragmentación)
+# Evitar escaneos de puertos (fragmentación)
 iptables -A INPUT -f -j DROP
 echo "Proteccion contra escaneos basicos,listo "
 
